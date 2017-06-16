@@ -99,6 +99,34 @@ $( function() {
     $('#bodyId').on("vmouseup", function(event) {
 		//Events.mouseUpEvent(event);
     });
+
+	$('#upButton').on("vmousedown", function(event) {
+        Button.up();
+    });
+	$('#upButton').on("vmouseup", function(event) {
+		Button.upReleased();
+    });
+
+	$('#downButton').on("vmousedown", function(event) {
+        Button.down();
+    });
+	$('#downButton').on("vmouseup", function(event) {
+		Button.downReleased();
+    });
+
+	$('#leftButton').on("vmousedown", function(event) {
+        Button.left();
+    });
+	$('#leftButton').on("vmouseup", function(event) {
+		Button.leftReleased();
+    });
+
+	$('#rightButton').on("vmousedown", function(event) {
+        Button.right();
+    });
+	$('#rightButton').on("vmouseup", function(event) {
+		Button.rightReleased();
+    });
 });
 
 SocketInfo.initSocket();
