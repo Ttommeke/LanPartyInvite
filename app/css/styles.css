@@ -1,0 +1,21 @@
+body { margin: 0; }
+
+canvas { width: 100%; height: 100% }
+
+.overlaybutton {
+    position: absolute;
+}
+
+.overlaybutton {
+    padding: 10px;
+    border: 1px solid #BBBBBB;
+    background-color: #CCCCCC;
+}
+
+#moveButton {
+    top: 100px;
+}
+
+#rotateButton {
+    top: 150px;
+}
