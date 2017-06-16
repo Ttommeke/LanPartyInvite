@@ -31,6 +31,12 @@ SocketInfo.initSocket = function() {
     });
 
     SocketInfo.socket.on("startup info",function(data) {
+
+        for (var player in Player.playerList) {
+            scene.remove(Player.playerList[player].playerCube);
+            delete Player.playerList[player];
+    	}
+
         var players = data.playerList;
 
         for (var i = 0; i < players.length; i++) {
