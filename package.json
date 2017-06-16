@@ -4,8 +4,8 @@
   "description": "Invite for an upcomming lanparty",
   "main": "server.js",
   "scripts": {
-      "dev" : "nodemon server.js",
-      "test": "mocha"
+    "dev": "nodemon server.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Ttommeke/LanPartyInvite/issues"
   },
-  "homepage": "https://github.com/Ttommeke/LanPartyInvite#readme"
+  "homepage": "https://github.com/Ttommeke/LanPartyInvite#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
 }
