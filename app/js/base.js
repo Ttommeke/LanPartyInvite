@@ -91,13 +91,13 @@ $.mobile.loading().hide();
 
 $( function() {
     $('#bodyId').on("vmousedown", function(event) {
-        Events.mouseDownEvent(event);
+        //Events.mouseDownEvent(event);
     });
     $('#bodyId').on("vmousemove", function(event) {
-		Events.mouseMove(event);
+		//Events.mouseMove(event);
     });
     $('#bodyId').on("vmouseup", function(event) {
-		Events.mouseUpEvent(event);
+		//Events.mouseUpEvent(event);
     });
 });
 
