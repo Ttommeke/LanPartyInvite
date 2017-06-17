@@ -10,7 +10,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
 		<!--build:css css/styles.min.css-->
+        <link rel="stylesheet" href="build/font-awesome-4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/styles.css">
+
 		<!--endbuild-->
 
         <script src="/node_modules/socket.io-client/dist/socket.io.js"></script>
@@ -31,11 +33,21 @@
 
     </head>
     <body id="bodyId" onmouseleave="Events.mouseUpEvent(event);" onkeydown="Events.keyDownEvent(event);" onkeyup="Events.keyUpEvent(event);">
-		<div id="upButton" class="overlaybutton unselectable">/\</div>
-		<div id="downButton" class="overlaybutton unselectable">\/</div>
-		<div id="leftButton" class="overlaybutton unselectable">&lt;</div>
-		<div id="rightButton" class="overlaybutton unselectable">&gt;</div>
-		<div id="danceButton" class="overlaybutton unselectable">Dance</div>
+		<div id="upButton" class="overlaybutton unselectable">
+            <i class="fa fa-arrow-circle-up fa-2x" aria-hidden="true"></i>
+        </div>
+		<div id="downButton" class="overlaybutton unselectable">
+            <i class="fa fa-arrow-circle-down fa-2x" aria-hidden="true"></i>
+        </div>
+		<div id="leftButton" class="overlaybutton unselectable">
+            <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i>
+        </div>
+		<div id="rightButton" class="overlaybutton unselectable">
+            <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
+        </div>
+		<div id="danceButton" class="overlaybutton unselectable">
+            <i class="fa fa-blind fa-2x" aria-hidden="true"></i>
+        </div>
 	</body>
     <!-- libaries -->
     <script src="/node_modules/socket.io-client/dist/socket.io.js"></script>
