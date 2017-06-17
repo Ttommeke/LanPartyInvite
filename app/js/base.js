@@ -16,6 +16,7 @@ var render = function() {
 	var arrowRightEvent = Events.keys.ArrowRight.readOutUpdate();
 	var arrowUpEvent = Events.keys.ArrowUp.readOutUpdate();
 	var arrowDownEvent = Events.keys.ArrowDown.readOutUpdate();
+	var spaceDownEvent = Events.keys[" "].readOutUpdate();
 
 	if (Player.playerId !== -1) {
 		var x = Player.playerList[Player.playerId].wantedPosition.x;
@@ -41,6 +42,16 @@ var render = function() {
 			Player.playerList[Player.playerId].wantedPosition.z += 1;
 			SocketInfo.socket.emit("move", Player.playerList[Player.playerId].wantedPosition);
 		}
+		if (spaceDownEvent.pressed && spaceDownEvent.updated) {
+
+			Player.playerList[Player.playerId].dancing = true;
+			SocketInfo.socket.emit("dance", { id: Player.playerId } );
+		}
+		if (!spaceDownEvent.pressed && spaceDownEvent.updated) {
+
+			Player.playerList[Player.playerId].dancing = false;
+			SocketInfo.socket.emit("stop dance", { id: Player.playerId } );
+		}
 
 		Camera.moveCamera(Camera.camera, {
 			position: new THREE.Vector3(
@@ -52,7 +63,10 @@ var render = function() {
 	}
 
 	for (var player in Player.playerList) {
-		Utils.movePosition(Player.playerList[player].playerCube, Player.playerList[player].wantedPosition, deltaTime);
+		Animation.movePosition(Player.playerList[player].playerCube, Player.playerList[player].wantedPosition, deltaTime);
+		if (Player.playerList[player].dancing) {
+			Animation.danceAnimation(Player.playerList[player].playerCube, TimeClock.elapsedTime);
+		}
 	}
 
 	renderer.render( scene, Camera.camera );
@@ -119,6 +133,13 @@ $( function() {
     });
 	$('#leftButton').on("vmouseup", function(event) {
 		Button.leftReleased();
+    });
+
+	$('#danceButton').on("vmousedown", function(event) {
+        Button.space();
+    });
+	$('#danceButton').on("vmouseup", function(event) {
+		Button.spaceReleased();
     });
 
 	$('#rightButton').on("vmousedown", function(event) {

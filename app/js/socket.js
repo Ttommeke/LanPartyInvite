@@ -15,6 +15,14 @@ SocketInfo.initSocket = function() {
         }
     });
 
+    SocketInfo.socket.on("dance", function(data){
+        Player.playerList[data.id].dancing = true;
+    });
+
+    SocketInfo.socket.on("stop dance", function(data){
+        Player.playerList[data.id].dancing = false;
+    });
+
     SocketInfo.socket.on("player left", function(data) {
 
         scene.remove(Player.playerList[data.id].playerCube);

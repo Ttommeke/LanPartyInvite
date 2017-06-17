@@ -104,7 +104,8 @@ Events.keys = {
     "ArrowLeft": Events.generateKeyObject(false),
     "ArrowRight": Events.generateKeyObject(false),
     "ArrowUp": Events.generateKeyObject(false),
-    "ArrowDown": Events.generateKeyObject(false)
+    "ArrowDown": Events.generateKeyObject(false),
+    " ": Events.generateKeyObject(false)
 };
 
 Events.mouse = {

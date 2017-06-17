@@ -26,7 +26,8 @@ io.on('connection', function(client){
             red: Math.random(),
             green: Math.random(),
             blue: Math.random(),
-        }
+        },
+        dancing: false
     };
 
     clients.push(clientData);
@@ -36,6 +37,18 @@ io.on('connection', function(client){
         clientData.position.z = data.z;
 
         io.emit("move", { id: clientData.id, position: data });
+    });
+
+    client.on("dance", function(data){
+        clientData.dancing = true;
+
+        io.emit("dance", { id: clientData.id });
+    });
+
+    client.on("stop dance", function(data){
+        clientData.dancing = false;
+
+        io.emit("stop dance", { id: clientData.id });
     });
 
     client.on("disconnect", function() {

@@ -14,7 +14,7 @@ Player.checkCubeCollision = function(map,x,z) {
     else {
         return false;
     }
-}
+};
 
 Player.generatePlayerCube = function(color, position) {
     var cube = Entity.createCube(Utils.rgbToHex(color), new THREE.Vector3( 0.8, 1.8, 0.8 ), new THREE.Vector3( position.x, 0.9, position.z ), new THREE.Vector3(0,0,0));

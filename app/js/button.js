@@ -36,3 +36,11 @@ Button.right = function(e) {
 Button.rightReleased = function(e) {
     Events.keys["ArrowRight"].setPressed(false);
 };
+
+Button.space = function(e) {
+    Events.keys[" "].setPressed(true);
+};
+
+Button.spaceReleased = function(e) {
+    Events.keys[" "].setPressed(false);
+};
