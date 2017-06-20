@@ -1,6 +1,7 @@
 
 var Animation = {
-    DANCE_CYCLE_TIME: 0.85
+    DANCE_CYCLE_TIME: 0.85,
+    DANCE_LIGHT_CYCLE_TIME: 0.85
 };
 
 Animation.danceAnimation = function( cube, elapseTime) {
@@ -15,7 +16,7 @@ Animation.danceAnimation = function( cube, elapseTime) {
 };
 
 Animation.dancingLights = function(player, elapseTime) {
-    var cycleTime = 3*Animation.DANCE_CYCLE_TIME / 2;
+    var cycleTime = Animation.DANCE_LIGHT_CYCLE_TIME;
     var difference = (elapseTime%cycleTime) / cycleTime;
 
     if (difference < cycleTime/3) {
