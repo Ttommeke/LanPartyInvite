@@ -40,7 +40,7 @@ SocketInfo.initSocket = function() {
         data.blueDancingLight = dancingLightBlue;
 
         data.playerCube = playerCube;
-        data.wantedPosition = { x: 0, z: 0 };
+        data.wantedPosition = data.position;
         Player.addPlayerToList(data, Player.playerList);
         scene.add(data.playerCube);
         scene.add(data.redDancingLight);
