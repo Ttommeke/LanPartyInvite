@@ -43,6 +43,9 @@ SocketInfo.initSocket = function() {
         data.wantedPosition = { x: 0, z: 0 };
         Player.addPlayerToList(data, Player.playerList);
         scene.add(data.playerCube);
+        scene.add(data.redDancingLight);
+        scene.add(data.greenDancingLight);
+        scene.add(data.blueDancingLight);
     });
 
     SocketInfo.socket.on("startup info",function(data) {
