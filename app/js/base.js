@@ -54,6 +54,9 @@ var render = function() {
 		if (!spaceDownEvent.pressed && spaceDownEvent.updated) {
 
 			Player.playerList[Player.playerId].dancing = false;
+			Player.playerList[Player.playerId].redDancingLight.intensity = 0;
+	        Player.playerList[Player.playerId].greenDancingLight.intensity = 0;
+	        Player.playerList[Player.playerId].blueDancingLight.intensity = 0;
 			SocketInfo.socket.emit("stop dance", { id: Player.playerId } );
 		}
 
@@ -70,6 +73,7 @@ var render = function() {
 		Animation.movePosition(Player.playerList[player].playerCube, Player.playerList[player].wantedPosition, deltaTime);
 		if (Player.playerList[player].dancing) {
 			Animation.danceAnimation(Player.playerList[player].playerCube, TimeClock.elapsedTime);
+			Animation.dancingLights(Player.playerList[player], TimeClock.elapsedTime);
 		}
 	}
 

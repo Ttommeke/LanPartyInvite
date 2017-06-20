@@ -1,10 +1,10 @@
 
 var Animation = {
-
+    DANCE_CYCLE_TIME: 0.85
 };
 
 Animation.danceAnimation = function( cube, elapseTime) {
-    var cycleTime = 0.85;
+    var cycleTime = Animation.DANCE_CYCLE_TIME;
     var difference = (elapseTime%cycleTime) / cycleTime;
 
     var scaleY = 1 + Math.sin(difference*Math.PI*2)/2;
@@ -12,6 +12,31 @@ Animation.danceAnimation = function( cube, elapseTime) {
     cube.scale.x = 1 / (scaleY);
     cube.scale.z = 1 / (scaleY);
     cube.position.y = (1.8 * scaleY) / 2;
+};
+
+Animation.dancingLights = function(player, elapseTime) {
+    var cycleTime = 3*Animation.DANCE_CYCLE_TIME / 2;
+    var difference = (elapseTime%cycleTime) / cycleTime;
+
+    if (difference < cycleTime/3) {
+        Utils.setXYZ(player.redDancingLight.position, player.playerCube.position);
+
+        player.redDancingLight.intensity = 1;
+        player.greenDancingLight.intensity = 0;
+        player.blueDancingLight.intensity = 0;
+    } else if (difference < 2*cycleTime/3) {
+        Utils.setXYZ(player.greenDancingLight.position, player.playerCube.position);
+
+        player.redDancingLight.intensity = 0;
+        player.greenDancingLight.intensity = 1;
+        player.blueDancingLight.intensity = 0;
+    } else {
+        Utils.setXYZ(player.blueDancingLight.position, player.playerCube.position);
+
+        player.redDancingLight.intensity = 0;
+        player.greenDancingLight.intensity = 0;
+        player.blueDancingLight.intensity = 1;
+    }
 };
 
 Animation.movePosition = function( cube, positionWant, delta) {

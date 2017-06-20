@@ -31,6 +31,13 @@ SocketInfo.initSocket = function() {
 
     SocketInfo.socket.on("new player", function(data) {
         var playerCube = Player.generatePlayerCube(data.color, data.position);
+        var dancingLightRed = Light.createPointLight( 0xFF0000, 0, 5, data.position);
+        var dancingLightGreen = Light.createPointLight( 0x00FF00, 0, 5, data.position);
+        var dancingLightBlue = Light.createPointLight( 0x0000FF, 0, 5, data.position);
+
+        data.redDancingLight = dancingLightRed;
+        data.greenDancingLight = dancingLightGreen;
+        data.blueDancingLight = dancingLightBlue;
 
         data.playerCube = playerCube;
         data.wantedPosition = { x: 0, z: 0 };
@@ -49,11 +56,21 @@ SocketInfo.initSocket = function() {
 
         for (var i = 0; i < players.length; i++) {
             var playerCube = Player.generatePlayerCube(players[i].color, players[i].position);
+            var dancingLightRed = Light.createPointLight( 0xFF0000, 0, 15, players[i].position);
+            var dancingLightGreen = Light.createPointLight( 0x00FF00, 0, 15, players[i].position);
+            var dancingLightBlue = Light.createPointLight( 0x0000FF, 0, 15, players[i].position);
+
+            players[i].redDancingLight = dancingLightRed;
+            players[i].greenDancingLight = dancingLightGreen;
+            players[i].blueDancingLight = dancingLightBlue;
 
             players[i].playerCube = playerCube;
             players[i].wantedPosition = players[i].position;
             Player.addPlayerToList(players[i], Player.playerList);
             scene.add(players[i].playerCube);
+            scene.add(players[i].redDancingLight);
+            scene.add(players[i].greenDancingLight);
+            scene.add(players[i].blueDancingLight);
         }
 
         Player.playerId = data.playerData.id;
