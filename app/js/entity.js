@@ -29,7 +29,7 @@ Entity.generateEntity = function(id, x, z) {
         var ground = Entity.createCube(0x343A44, new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( x, -0.5, z ), new THREE.Vector3(0,0,0));
         var stick = Entity.createCube(0x443023, new THREE.Vector3( 0.1, 2, 0.1 ), new THREE.Vector3( x, 1, z ), new THREE.Vector3(0,0,0));
         var lantern = Entity.createCube(0xfcc623, new THREE.Vector3( 0.2, 0.2, 0.2 ), new THREE.Vector3( x, 2, z ), new THREE.Vector3(0,0,0));
-        var light = Light.createPointLight(0xfcc623, 0.6, 7, new THREE.Vector3( x, 2, z ));
+        var light = Light.createPointLight(0xfcc623, 1, 7, new THREE.Vector3( x, 2, z ));
 
         return [ground, stick, lantern, light];
     } else if (id === 5) {
@@ -38,7 +38,7 @@ Entity.generateEntity = function(id, x, z) {
         var smallBigRockCube = Entity.createCube(0x9abad3, new THREE.Vector3(0.2,0.1,0.20),new THREE.Vector3(x+0.2,0.05,z-0.2), new THREE.Vector3(0,0,0));
         var smallRockCube = Entity.createCube(0x9abad3, new THREE.Vector3(0.12,0.08,0.21), new THREE.Vector3(x-0.15,0.04,z+0.3), new THREE.Vector3(0,0,0));
 
-        var light = Light.createPointLight(0xc9e6fc, 0.6, 10, new THREE.Vector3( x, 0.2, z ));
+        var light = Light.createPointLight(0xc9e6fc, 1, 10, new THREE.Vector3( x, 0.2, z ));
 
         return [ground, bigRockCube, smallBigRockCube, smallRockCube, light];
     } else {
