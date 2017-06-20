@@ -12,6 +12,10 @@ var render = function() {
 	fpsCounter.begin();
 	var deltaTime = TimeClock.getDelta();
 
+	if (deltaTime > 1) {
+		deltaTime = 1;
+	}
+
 	var arrowLeftEvent = Events.keys.ArrowLeft.readOutUpdate();
 	var arrowRightEvent = Events.keys.ArrowRight.readOutUpdate();
 	var arrowUpEvent = Events.keys.ArrowUp.readOutUpdate();

@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const uuid = require("uuid");
+const configuration = require("./configuration");
 
 const port = process.env.PORT || 5000;
 
@@ -19,8 +20,8 @@ io.on('connection', function(client){
     let clientData = {
         id: uuid.v4(),
         position: {
-            x: 0,
-            z: 0
+            x: configuration.startPosition.x,
+            z: configuration.startPosition.z
         },
         color: {
             red: Math.random(),
