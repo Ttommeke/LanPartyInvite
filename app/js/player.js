@@ -8,7 +8,7 @@ Player.checkCubeCollision = function(map,x,z) {
     var zToUse = z;
 
     if (xToUse < 0 || zToUse < 0 || zToUse >= map.length || xToUse >= map[zToUse].length
-        ||  map[zToUse][xToUse].id == 3 || map[zToUse][xToUse].id == 6 ) {
+        || map[zToUse][xToUse].id == 0 ||  map[zToUse][xToUse].id == 3 || map[zToUse][xToUse].id == 6 ) {
         return true;
     }
     else {
