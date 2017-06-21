@@ -23,25 +23,25 @@ var render = function() {
 	var spaceDownEvent = Events.keys[" "].readOutUpdate();
 
 	if (Player.playerId !== -1) {
-		var x = Player.playerList[Player.playerId].wantedPosition.x;
-		var z = Player.playerList[Player.playerId].wantedPosition.z;
+		var wantedPos = Player.playerList[Player.playerId].wantedPosition;
 
-		if (arrowRightEvent.pressed && arrowRightEvent.updated && !Player.checkCubeCollision(Map.map,x + 1, z)) {
+
+		if (arrowRightEvent.pressed && arrowRightEvent.updated && !Player.checkCubeCollision(Map.map,wantedPos.x + 1, wantedPos.z)) {
 
 			Player.playerList[Player.playerId].wantedPosition.x += 1;
 			SocketInfo.socket.emit("move", Player.playerList[Player.playerId].wantedPosition);
 		}
-		if (arrowLeftEvent.pressed && arrowLeftEvent.updated && !Player.checkCubeCollision(Map.map,x - 1, z)) {
+		if (arrowLeftEvent.pressed && arrowLeftEvent.updated && !Player.checkCubeCollision(Map.map,wantedPos.x - 1, wantedPos.z)) {
 
 			Player.playerList[Player.playerId].wantedPosition.x -= 1;
 			SocketInfo.socket.emit("move", Player.playerList[Player.playerId].wantedPosition);
 		}
-		if (arrowUpEvent.pressed && arrowUpEvent.updated && !Player.checkCubeCollision(Map.map,x, z - 1)) {
+		if (arrowUpEvent.pressed && arrowUpEvent.updated && !Player.checkCubeCollision(Map.map,wantedPos.x, wantedPos.z - 1)) {
 
 			Player.playerList[Player.playerId].wantedPosition.z -= 1;
 			SocketInfo.socket.emit("move", Player.playerList[Player.playerId].wantedPosition);
 		}
-		if (arrowDownEvent.pressed && arrowDownEvent.updated && !Player.checkCubeCollision(Map.map,x, z + 1)) {
+		if (arrowDownEvent.pressed && arrowDownEvent.updated && !Player.checkCubeCollision(Map.map,wantedPos.x, wantedPos.z + 1)) {
 
 			Player.playerList[Player.playerId].wantedPosition.z += 1;
 			SocketInfo.socket.emit("move", Player.playerList[Player.playerId].wantedPosition);
@@ -62,9 +62,9 @@ var render = function() {
 
 		Camera.moveCamera(Camera.camera, {
 			position: new THREE.Vector3(
-				Player.playerList[Player.playerId].playerCube.position.x + 3,
-				Player.playerList[Player.playerId].playerCube.position.y + 5,
-				Player.playerList[Player.playerId].playerCube.position.z + 5
+				wantedPos.x + 3,
+				6,
+				wantedPos.z + 5
 			)
 		}, deltaTime, Camera.speed);
 	}
