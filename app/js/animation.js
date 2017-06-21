@@ -15,6 +15,13 @@ Animation.danceAnimation = function( cube, elapseTime) {
     cube.position.y = (1.8 * scaleY) / 2;
 };
 
+Animation.stopDancingLights = function(player) {
+
+    player.redDancingLight.intensity = 0;
+    player.greenDancingLight.intensity = 0;
+    player.blueDancingLight.intensity = 0;
+}
+
 Animation.dancingLights = function(player, elapseTime) {
     var cycleTime = Animation.DANCE_LIGHT_CYCLE_TIME;
     var difference = (elapseTime%cycleTime) / cycleTime;

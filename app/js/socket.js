@@ -21,9 +21,6 @@ SocketInfo.initSocket = function() {
 
     SocketInfo.socket.on("stop dance", function(data){
         Player.playerList[data.id].dancing = false;
-        Player.playerList[data.id].redDancingLight.intensity = 0;
-        Player.playerList[data.id].greenDancingLight.intensity = 0;
-        Player.playerList[data.id].blueDancingLight.intensity = 0;
     });
 
     SocketInfo.socket.on("player left", function(data) {
