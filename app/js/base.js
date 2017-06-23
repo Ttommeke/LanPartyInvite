@@ -117,12 +117,26 @@ var render = function() {
 var modulesToLoad = 0;
 var modulesLoaded = 0;
 
+$("#upButton").hide();
+$("#downButton").hide();
+$("#leftButton").hide();
+$("#rightButton").hide();
+$("#danceButton").hide();
+
 var loadModuleDone = function() {
 	modulesLoaded++;
 
 	if (modulesLoaded >= modulesToLoad) {
 		TimeClock.getDelta();
 		render();
+
+		$("#loadingOverlay").slideUp();
+
+		$("#upButton").show();
+		$("#downButton").show();
+		$("#leftButton").show();
+		$("#rightButton").show();
+		$("#danceButton").show();
 	}
 };
 
