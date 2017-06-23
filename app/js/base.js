@@ -8,6 +8,8 @@ var fpsCounter = new Stats();
 fpsCounter.showPanel(0);
 document.body.appendChild( fpsCounter.dom );
 
+Audio.initAudioContext();
+
 var render = function() {
 	fpsCounter.begin();
 	var deltaTime = TimeClock.getDelta();
@@ -21,6 +23,7 @@ var render = function() {
 	var arrowUpEvent = Events.keys.ArrowUp.readOutUpdate();
 	var arrowDownEvent = Events.keys.ArrowDown.readOutUpdate();
 	var spaceDownEvent = Events.keys[" "].readOutUpdate();
+	var aDownEvent = Events.keys["a"].readOutUpdate();
 
 	if (Player.playerId !== -1) {
 		var wantedPos = Player.playerList[Player.playerId].wantedPosition;
@@ -50,12 +53,40 @@ var render = function() {
 
 			Player.playerList[Player.playerId].dancing = true;
 			SocketInfo.socket.emit("dance", { id: Player.playerId } );
+
+			if (Player.playerList[Player.playerId].dancingAudio !== undefined) {
+				Player.playerList[Player.playerId].dancingAudio.audioSource.stop();
+			}
+
+			Player.playerList[Player.playerId].dancingAudio = Audio.createAudio(Audio.audioList.dance);
+			Utils.setXYZAudioObjectToXYZPosition(Player.playerList[Player.playerId].dancingAudio.audioPannerNode, Player.playerList[Player.playerId].playerCube.position);
+			Player.playerList[Player.playerId].dancingAudio.audioSource.start(0);
 		}
 		if (!spaceDownEvent.pressed && spaceDownEvent.updated) {
 
 			Player.playerList[Player.playerId].dancing = false;
 			SocketInfo.socket.emit("stop dance", { id: Player.playerId } );
+
+			Player.playerList[Player.playerId].dancingAudio.audioSource.stop();
 		}
+
+
+		if (aDownEvent.pressed && aDownEvent.updated) {
+
+
+		}
+		if (!aDownEvent.pressed && aDownEvent.updated) {
+
+
+		}
+
+		var positionListener = {
+			x: Player.playerList[Player.playerId].playerCube.position.x,
+			y: Player.playerList[Player.playerId].playerCube.position.y + 0.3,
+			z: Player.playerList[Player.playerId].playerCube.position.z
+		};
+
+		Utils.setXYZAudioObjectToXYZPosition( Audio.audioContext.listener, positionListener);
 
 		Camera.moveCamera(Camera.camera, {
 			position: new THREE.Vector3(
@@ -69,6 +100,7 @@ var render = function() {
 	for (var player in Player.playerList) {
 		Animation.movePosition(Player.playerList[player].playerCube, Player.playerList[player].wantedPosition, deltaTime);
 		if (Player.playerList[player].dancing) {
+			Utils.setXYZAudioObjectToXYZPosition(Player.playerList[player].dancingAudio.audioPannerNode, Player.playerList[player].playerCube.position);
 			Animation.danceAnimation(Player.playerList[player].playerCube, TimeClock.elapsedTime);
 			Animation.dancingLights(Player.playerList[player], TimeClock.elapsedTime);
 		} else {
@@ -80,7 +112,19 @@ var render = function() {
 	fpsCounter.end();
 
 	requestAnimationFrame( render );
-}
+};
+
+var modulesToLoad = 0;
+var modulesLoaded = 0;
+
+var loadModuleDone = function() {
+	modulesLoaded++;
+
+	if (modulesLoaded >= modulesToLoad) {
+		TimeClock.getDelta();
+		render();
+	}
+};
 
 $.getJSON("map.json", function(data) {
 
@@ -92,9 +136,23 @@ $.getJSON("map.json", function(data) {
 	Camera.camera.rotation.x = -Math.PI/4;
 	Camera.camera.rotation.y = Math.PI*1/8;
 
+	modulesToLoad += data.lights.length;
+	for (var audio in data.audio) {
+		modulesToLoad += 1;
+	};
+	modulesToLoad += 1; //for the rendering of all the blocks
+
+
 	data.lights.forEach(function(light) {
 		scene.add(Light.generateLight(light));
+		loadModuleDone();
 	});
+
+	for (var audio in data.audio) {
+		Audio.loadAudio(audio, data.audio[audio]).then(function() {
+			loadModuleDone();
+		});
+	}
 
 	var emap = Map.generateMapFromNumberMap(data.map);
 	Map.loadMapInScene(emap, scene);
@@ -103,8 +161,7 @@ $.getJSON("map.json", function(data) {
 
 	renderer.setClearColor( Utils.stringHexToHex( data.clearcolor ), 1 );
 
-	TimeClock.getDelta();
-	render();
+	loadModuleDone();
 });
 
 //hide "Loading"-div

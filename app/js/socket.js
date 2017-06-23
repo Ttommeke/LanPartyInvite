@@ -17,10 +17,20 @@ SocketInfo.initSocket = function() {
 
     SocketInfo.socket.on("dance", function(data){
         Player.playerList[data.id].dancing = true;
+
+        if (Player.playerList[data.id].dancingAudio !== undefined) {
+            Player.playerList[data.id].dancingAudio.audioSource.stop();
+        }
+
+        Player.playerList[data.id].dancingAudio = Audio.createAudio(Audio.audioList.dance);
+        Utils.setXYZAudioObjectToXYZPosition(Player.playerList[data.id].dancingAudio.audioPannerNode, Player.playerList[data.id].playerCube.position);
+        Player.playerList[data.id].dancingAudio.audioSource.start(0);
     });
 
     SocketInfo.socket.on("stop dance", function(data){
         Player.playerList[data.id].dancing = false;
+
+        Player.playerList[data.id].dancingAudio.audioSource.stop();
     });
 
     SocketInfo.socket.on("player left", function(data) {

@@ -42,6 +42,10 @@ Utils.setXYZ = function( toCopyTo, toCopy) {
     toCopyTo.z = toCopy.z;
 };
 
+Utils.setXYZAudioObjectToXYZPosition = function(audioObject, position) {
+    audioObject.setPosition(position.x, position.y, position.z);
+};
+
 Utils.stringHexToHex = function(stringHex) {
     return parseInt(stringHex, 16);
 };
