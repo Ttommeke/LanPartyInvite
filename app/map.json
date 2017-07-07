@@ -1,5 +1,9 @@
 {
 	"clearcolor": "0x11111111",
+	"text": {
+		"color": "0x8c5641",
+		"fontFile": "build/Cinzel_Bold.json"
+	},
 	"lights": [
 		{ "type": "DirectionalLight", "strength": 0, "position": { "x": 1, "y": 0.8, "z": 0.5 } }
 	],

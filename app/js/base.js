@@ -10,6 +10,7 @@ document.body.appendChild( fpsCounter.dom );
 
 Audio.initAudioContext();
 
+
 var render = function() {
 	fpsCounter.begin();
 	var deltaTime = TimeClock.getDelta();
@@ -154,6 +155,10 @@ var loadModuleDone = function() {
 };
 
 $.getJSON("map.json", function(data) {
+
+	var fontLoader = new THREE.FontLoader();
+	fontLoader.load( data.text.fontFile, Text.loadFont, undefined, undefined );
+	Text.TEXT_COLOR = Utils.stringHexToHex(data.text.color);
 
 	Camera.camera.rotation.order = "YXZ";
 
