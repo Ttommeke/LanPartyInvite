@@ -72,11 +72,22 @@ var render = function() {
 
 
 		if (aDownEvent.pressed && aDownEvent.updated) {
+			var index = parseInt(Math.random() * Audio.randomAudio.length);
+			var audioName = Audio.randomAudio[index];
 
+			var position = {
+				x: Player.playerList[Player.playerId].wantedPosition.x,
+				y: 1,
+				z: Player.playerList[Player.playerId].wantedPosition.z
+			};
 
+			SocketInfo.socket.emit("play audio", { audioName: audioName, position: position });
+
+			var audioData = Audio.createAudio(Audio.audioList[audioName]);
+			Utils.setXYZAudioObjectToXYZPosition(audioData.audioPannerNode, position);
+			audioData.audioSource.start(0);
 		}
 		if (!aDownEvent.pressed && aDownEvent.updated) {
-
 
 		}
 
@@ -122,6 +133,7 @@ $("#downButton").hide();
 $("#leftButton").hide();
 $("#rightButton").hide();
 $("#danceButton").hide();
+$("#randomSoundButton").hide();
 
 var loadModuleDone = function() {
 	modulesLoaded++;
@@ -137,6 +149,7 @@ var loadModuleDone = function() {
 		$("#leftButton").show();
 		$("#rightButton").show();
 		$("#danceButton").show();
+		$("#randomSoundButton").show();
 	}
 };
 
@@ -218,6 +231,13 @@ $( function() {
     });
 	$('#danceButton').on("vmouseup", function(event) {
 		Button.spaceReleased();
+    });
+
+	$('#randomSoundButton').on("vmousedown", function(event) {
+        Button.a();
+    });
+	$('#randomSoundButton').on("vmouseup", function(event) {
+		Button.aReleased();
     });
 
 	$('#rightButton').on("vmousedown", function(event) {

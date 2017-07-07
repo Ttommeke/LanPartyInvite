@@ -3,7 +3,15 @@ var Audio = {
     audioContext: undefined,
     audioList: {
 
-    }
+    },
+    randomAudio: [
+        "randomHorn",
+		"randomGong" ,
+		"randomDog" ,
+		"randomGibbon",
+		"randomSuspence",
+		"randomRooster"
+    ]
 };
 
 Audio.initAudioContext = function() {

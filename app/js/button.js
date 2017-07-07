@@ -44,3 +44,11 @@ Button.space = function(e) {
 Button.spaceReleased = function(e) {
     Events.keys[" "].setPressed(false);
 };
+
+Button.a = function(e) {
+    Events.keys["a"].setPressed(true);
+};
+
+Button.aReleased = function(e) {
+    Events.keys["a"].setPressed(false);
+};

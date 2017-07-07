@@ -33,6 +33,14 @@ SocketInfo.initSocket = function() {
         Player.playerList[data.id].dancingAudio.audioSource.stop();
     });
 
+    SocketInfo.socket.on("play audio", function(data){
+        console.log("start playing");
+        var audio = Audio.createAudio(Audio.audioList[data.audioName]);
+
+        Utils.setXYZAudioObjectToXYZPosition(audio.audioPannerNode, data.position);
+        audio.audioSource.start(0);
+    });
+
     SocketInfo.socket.on("player left", function(data) {
 
         scene.remove(Player.playerList[data.id].playerCube);

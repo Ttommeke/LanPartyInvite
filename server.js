@@ -52,6 +52,10 @@ io.on('connection', function(client){
         io.emit("stop dance", { id: clientData.id });
     });
 
+    client.on("play audio", function(data){
+        io.emit("play audio", data);
+    });
+
     client.on("disconnect", function() {
         //client leaves
         io.emit("player left", { id: clientData.id });

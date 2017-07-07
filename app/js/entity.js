@@ -69,6 +69,8 @@ Entity.generateEntity = function(id, x, z) {
         var groundBroken2 = Entity.createCube(Entity.Colors.WALL_GRAY, new THREE.Vector3( 0.3, 0.15, 1 ), new THREE.Vector3( x-0.35, 0.07, z ), new THREE.Vector3(0,0,0));
 
         return [ground, head, headBroken, groundBroken, groundBroken2, headBroken2];
+    } else if (id === 9) {
+        return [Entity.createCube(Entity.Colors.GROUND_GRAY, new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( x, 0.5, z ), new THREE.Vector3(0,0,0))];
     } else {
         return [];
     }
