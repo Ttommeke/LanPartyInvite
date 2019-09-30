@@ -1,0 +1,79 @@
+<!DOCTYPE html
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>The Promised Lan</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+		<!--build:css css/styles.min.css-->
+        <link rel="stylesheet" href="build/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
+		<link rel="stylesheet" href="css/styles.css">
+
+		<!--endbuild-->
+
+        <script src="/node_modules/socket.io-client/dist/socket.io.js"></script>
+        <script src="build/three.js"></script>
+		<script src="build/jquery-1.11.1.min.js"></script>
+		<script src="build/jquery.mobile-1.4.5.min.js"></script>
+		<script src="build/stats.min.js"></script>
+		<script src="js/events.js"></script>
+		<script src="js/button.js"></script>
+		<script src="js/camera.js"></script>
+		<script src="js/light.js"></script>
+		<script src="js/map.js"></script>
+		<script src="js/entity.js"></script>
+		<script src="js/utils.js"></script>
+		<script src="js/animation.js"></script>
+        <script src="js/player.js"></script>
+        <script src="js/audio.js"></script>
+        <script src="js/text.js"></script>
+        <script src="js/socket.js"></script>
+
+    </head>
+    <body id="bodyId" onmouseleave="Events.mouseUpEvent(event);" onkeydown="Events.keyDownEvent(event);" onkeyup="Events.keyUpEvent(event);">
+		<div id="upButton" class="overlaybutton unselectable">
+            <i class="fa fa-arrow-circle-up fa-2x" aria-hidden="true"></i>
+        </div>
+		<div id="downButton" class="overlaybutton unselectable">
+            <i class="fa fa-arrow-circle-down fa-2x" aria-hidden="true"></i>
+        </div>
+		<div id="leftButton" class="overlaybutton unselectable">
+            <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i>
+        </div>
+		<div id="rightButton" class="overlaybutton unselectable">
+            <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
+        </div>
+		<div id="danceButton" class="overlaybutton unselectable">
+            <i class="fa fa-blind fa-2x" aria-hidden="true"></i>
+        </div>
+		<div id="randomSoundButton" class="overlaybutton unselectable">
+            <i class="fa fa-commenting-o fa-2x" aria-hidden="true"></i>
+        </div>
+
+
+        <div id="loadingOverlay">
+            <div id="loadingMessageHolder">
+                <div id="loadingMessage">
+                    Teambuilding
+                    <br/>
+                    Invite
+                    <br/>
+                    <br/>
+                    loading...
+                    <br/>
+                    <br/>
+                    use the arrow keys
+                </div>
+            </div>
+        </div>
+	</body>
+    <!-- libaries -->
+    <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+
+    <script src="js/base.js"></script>
+</html>

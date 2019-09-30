@@ -2,7 +2,7 @@
 
 module.exports = {
     "startPosition": {
-        x: 4,
-        z: 4
+        x: 7,
+        z: 60
     }
 };
