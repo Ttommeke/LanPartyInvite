@@ -124,6 +124,9 @@ var render = function() {
 		var x = Player.playerList[player].wantedPosition.x;
 		var z = Player.playerList[player].wantedPosition.z;
 
+		console.log(z,x);
+		
+
 		if (Map.map[z][x].id == 12) {
 			Map.magicDoorsOpen = true;
 		}

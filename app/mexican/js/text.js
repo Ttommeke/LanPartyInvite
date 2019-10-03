@@ -1,6 +1,6 @@
 
 var Text = {
-    TEXT_COLOR: 0xc1c1c1,
+    TEXT_COLOR: 0xff0101,
     font: undefined
 };
 
@@ -24,6 +24,75 @@ Text.createText = function(text, size, color) {
 };
 
 Text.initText = function() {
+
+    var textToAdd = Text.createText( "Use the keyboard", 0.3, Text.TEXT_COLOR);
+    textToAdd.position.set(6, 2.5, 61);
+    textToAdd.rotation.order = "YXZ";
+    textToAdd.rotation.set(-Math.PI/3, Math.PI/8, 0);
+    scene.add(textToAdd);
+    textToAdd = Text.createText( "or on-screen", 0.3, Text.TEXT_COLOR);
+    textToAdd.position.set(6.6, 2.2, 61.3);
+    textToAdd.rotation.order = "YXZ";
+    textToAdd.rotation.set(-Math.PI/3, Math.PI/8, 0);
+    scene.add(textToAdd);
+    textToAdd = Text.createText( "arrows", 0.3, Text.TEXT_COLOR);
+    textToAdd.position.set(7.5, 1.9, 61.5);
+    textToAdd.rotation.order = "YXZ";
+    textToAdd.rotation.set(-Math.PI/3, Math.PI/8, 0);
+    scene.add(textToAdd);
+
+    var dance = Text.createText( "space", 0.4, Text.TEXT_COLOR);
+    dance.position.set(0.35, 1.5, 32.2);
+    dance.rotation.set(0, Math.PI/2, 0);
+    scene.add(dance);
+
+    var withDance = Text.createText( "to", 0.4, Text.TEXT_COLOR);
+    withDance.position.set(0.35, 1.0, 31.7);
+    withDance.rotation.set(0, Math.PI/2, 0);
+    scene.add(withDance);
+
+    var space = Text.createText( "dance", 0.4, Text.TEXT_COLOR);
+    space.position.set(0.35, 0.5, 32.2);
+    space.rotation.set(0, Math.PI/2, 0);
+    scene.add(space);
+
+
+    space = Text.createText( "Good", 0.4, Text.TEXT_COLOR);
+    space.position.set(1.1, 1, 34.35);
+    space.rotation.set(0, 0, 0);
+    scene.add(space);
+
+    space = Text.createText( "job", 0.4, Text.TEXT_COLOR);
+    space.position.set(5.5, 1, 34.35);
+    space.rotation.set(0, 0, 0);
+    scene.add(space);
+
+    space = Text.createText( "Closed door?", 0.4, Text.TEXT_COLOR);
+    space.position.set(10, -0.1, 29);
+    space.rotation.set(-Math.PI/2, 0, 0);
+    scene.add(space);
+
+    space = Text.createText( "Remember", 0.3, Text.TEXT_COLOR);
+    space.position.set(17, 1, 34.4);
+    space.rotation.set(0, 0, 0);
+    scene.add(space);
+
+    space = Text.createText( "Teamwork", 0.3, Text.TEXT_COLOR);
+    space.position.set(20.7, 1, 34.4);
+    space.rotation.set(0, 0, 0);
+    scene.add(space);
+
+    space = Text.createText( "Teambuilding", 0.4, Text.TEXT_COLOR);
+    space.position.set(30.9, 1.5, 0.35);
+    space.rotation.set(0, 0, 0);
+    scene.add(space);
+
+
+    space = Text.createText( "14/10/19", 0.4, Text.TEXT_COLOR);
+    space.position.set(31.8, 1, 0.35);
+    space.rotation.set(0, 0, 0);
+    scene.add(space);
+
     /*var friend = Text.createText( "Explore with a", 0.4, Text.TEXT_COLOR);
     friend.position.set(1.5, 1.5, 1.35);
     friend.rotation.set(0, 0, 0);
@@ -34,17 +103,17 @@ Text.initText = function() {
     withA.rotation.set(0, 0, 0);
     scene.add(withA);
 
-    var dance = Text.createText( "dance", 0.4, Text.TEXT_COLOR);
+    var dance = Text.createText( "space", 0.4, Text.TEXT_COLOR);
     dance.position.set(0.35, 1.5, 9.2);
     dance.rotation.set(0, Math.PI/2, 0);
     scene.add(dance);
 
-    var withDance = Text.createText( "with", 0.4, Text.TEXT_COLOR);
+    var withDance = Text.createText( "to", 0.4, Text.TEXT_COLOR);
     withDance.position.set(0.35, 1.0, 9);
     withDance.rotation.set(0, Math.PI/2, 0);
     scene.add(withDance);
 
-    var space = Text.createText( "space", 0.4, Text.TEXT_COLOR);
+    var space = Text.createText( "dance", 0.4, Text.TEXT_COLOR);
     space.position.set(0.35, 0.5, 9.2);
     space.rotation.set(0, Math.PI/2, 0);
     scene.add(space);
