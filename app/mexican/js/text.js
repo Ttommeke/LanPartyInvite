@@ -25,17 +25,17 @@ Text.createText = function(text, size, color) {
 
 Text.initText = function() {
 
-    var textToAdd = Text.createText( "Use the keyboard", 0.3, Text.TEXT_COLOR);
+    var textToAdd = Text.createText( "Use the keyboard", 0.3, 0xd5d5d5);
     textToAdd.position.set(6, 2.5, 61);
     textToAdd.rotation.order = "YXZ";
     textToAdd.rotation.set(-Math.PI/3, Math.PI/8, 0);
     scene.add(textToAdd);
-    textToAdd = Text.createText( "or on-screen", 0.3, Text.TEXT_COLOR);
+    textToAdd = Text.createText( "or on-screen", 0.3, 0xd5d5d5);
     textToAdd.position.set(6.6, 2.2, 61.3);
     textToAdd.rotation.order = "YXZ";
     textToAdd.rotation.set(-Math.PI/3, Math.PI/8, 0);
     scene.add(textToAdd);
-    textToAdd = Text.createText( "arrows", 0.3, Text.TEXT_COLOR);
+    textToAdd = Text.createText( "arrows", 0.3, 0xd5d5d5);
     textToAdd.position.set(7.5, 1.9, 61.5);
     textToAdd.rotation.order = "YXZ";
     textToAdd.rotation.set(-Math.PI/3, Math.PI/8, 0);

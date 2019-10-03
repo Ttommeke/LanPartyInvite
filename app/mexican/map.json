@@ -6,7 +6,7 @@
 	}, 
 	"lights": [
 		{ "type": "DirectionalLight",  "strength": 0.4,  "position": { "x": 1,  "y": 0.8,  "z": 0.5 } },
-		{ "type": "HemisphereLight",  "strength": 0.15,  "ground": "0xFFFFFF",  "sky": "0xFFFFFF" }
+		{ "type": "HemisphereLight",  "strength": 0.3,  "ground": "0xFFFFFF",  "sky": "0xFFFFFF" }
 	], 
 	"_commentLights": [
 		{ "type": "PointLight",  "color": "0xFFFFFF",  "strength": 0.8,  "distance": 10,  "position": { "x": 3,  "y": 3,  "z": 3 } }, 
